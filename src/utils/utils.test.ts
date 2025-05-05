@@ -1,5 +1,12 @@
 import { expect, test } from "vitest";
-import { isHiragana, isKatakana, isKana } from ".";
+import {
+  isHiragana,
+  isKatakana,
+  isKana,
+  hasHiragana,
+  hasKatakana,
+  hasKana,
+} from ".";
 
 // isHiragana
 test("Receives hiragana, returns true", () => {
@@ -46,4 +53,55 @@ test("Receives hiragana, returns true", () => {
 
 test("Receives english, returns false", () => {
   expect(isKana("a")).toBe(false);
+});
+
+// hasHiragana
+test("Receives all hiragana, returns true", () => {
+  expect(hasHiragana("あいえうお")).toBe(true);
+});
+
+test("Receives all katakana, returns false", () => {
+  expect(hasHiragana("アイエウオ")).toBe(false);
+});
+
+test("Receives all english, returns false", () => {
+  expect(hasHiragana("aieuo")).toBe(false);
+});
+
+test("Receives hiragana, katakana, english, returns true", () => {
+  expect(hasHiragana("あいえうおアイエウオaieuo")).toBe(true);
+});
+
+// hasKatakana
+test("Receives all katakana, returns true", () => {
+  expect(hasKatakana("アイエウオ")).toBe(true);
+});
+
+test("Receives all hiragana, returns false", () => {
+  expect(hasKatakana("あいえうお")).toBe(false);
+});
+
+test("Receives all english, returns false", () => {
+  expect(hasKatakana("aieuo")).toBe(false);
+});
+
+test("Receives katakana, hiragana, english, returns true", () => {
+  expect(hasKatakana("あいえうおアイエウオaieuo")).toBe(true);
+});
+
+// hasKana
+test("Receives all katakana, returns true", () => {
+  expect(hasKana("アイエウオ")).toBe(true);
+});
+
+test("Receives all hiragana, returns true", () => {
+  expect(hasKana("あいえうお")).toBe(true);
+});
+
+test("Receives all english, returns false", () => {
+  expect(hasKana("aieuo")).toBe(false);
+});
+
+test("Receives katakana, hiragana, english, returns true", () => {
+  expect(hasKana("あいえうおアイエウオaieuo")).toBe(true);
 });

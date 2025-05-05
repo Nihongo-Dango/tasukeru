@@ -29,3 +29,33 @@ export const isKatakana = (char: string): boolean => {
 export const isKana = (char: string): boolean => {
   return isHiragana(char) || isKatakana(char);
 };
+
+/**
+ * Checks if a given string has any hiragana.
+ *
+ * @param  {string} text - Will check all characters within this string
+ * @returns {boolean}  If the given string has any hiragana
+ */
+export const hasHiragana = (text: string): boolean => {
+  return [...text].some((x) => isHiragana(x));
+};
+
+/**
+ * Checks if a given string has any katakana.
+ *
+ * @param  {string} text - Will check all characters within this string
+ * @returns {boolean}  If the given string has any katakana
+ */
+export const hasKatakana = (text: string): boolean => {
+  return [...text].some((x) => isKatakana(x));
+};
+
+/**
+ * Checks if a given string has any kana.
+ *
+ * @param  {string} text - Will check all characters within this string
+ * @returns {boolean}  If the given string has any katakana
+ */
+export const hasKana = (text: string): boolean => {
+  return [...text].some((x) => isKana(x));
+};
